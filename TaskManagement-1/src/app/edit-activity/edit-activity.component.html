@@ -1,0 +1,25 @@
+<h2 mat-dialog-title style="font-family: 'Courier New', Courier, monospace; font: bold; color: #07a35d;">Edit Activity</h2>
+<div mat-dialog-content>
+  <!-- Your form fields for editing -->
+  <!-- <label>Title:</label>
+  <input [(ngModel)]="activity.title" [ngModelOptions]="{standalone:true}" placeholder="Enter title" /> -->
+
+  <label>Description:</label>
+  <textarea [(ngModel)]="activity.description" [ngModelOptions]="{standalone:true}" #message maxlength="256"
+    placeholder="Enter description"></textarea>
+ 
+
+  <label>Date:</label>
+  <input type="date" [(ngModel)]="activity.date" [ngModelOptions]="{standalone:true}" />
+
+  <label>Duration:</label>
+  <input [(ngModel)]="activity.duration" [ngModelOptions]="{standalone:true}" placeholder="Enter duration" />
+
+</div>
+<div mat-dialog-actions>
+  <button mat-stroked-button color="primary" (click)="onCancelClick()">Cancel</button>
+  <button mat-stroked-button color="primary" (click)="updateRecords()">Save</button>
+</div>
+
+
+

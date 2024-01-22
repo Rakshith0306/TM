@@ -1,0 +1,84 @@
+
+    <div class="container">
+        <h1 style="color: #07a35d; margin-right: 400px;">Add Task</h1>
+
+        <form>
+            <div class="form-group">
+                <label for="taskName">TaskName</label>
+                <input type="text" [(ngModel)]="taskName" [ngModelOptions]="{standalone:true}" class="form-control"
+                    id="taskName" name="taskName" style="width: 700px;">
+            </div>
+
+            <div class="form-group">
+                <label for="category">Category</label>
+                <input type="text" [(ngModel)]="category" [ngModelOptions]="{standalone:true}" class="form-control"
+                    id="category" name="category" style="width: 700px;">
+            </div>
+
+            <div class="form-group">
+                <label for="priority">Priority</label>
+                <input type="text" [(ngModel)]="priority" [ngModelOptions]="{standalone:true}" class="form-control"
+                    id="priority" name="priority" style="width: 700px;">
+            </div>
+            <div class="form-group">
+                <label for="notes">Notes</label>
+                <input type="text" [(ngModel)]="notes" [ngModelOptions]="{standalone:true}" class="form-control"
+                    id="notes" name="notes" style="width: 700px;">
+            </div>
+            <div class="form-group">
+                <label for="startDate">StartDate</label>
+                <input type="date" [(ngModel)]="startDate" [ngModelOptions]="{standalone:true}" class="form-control"
+                    id="startDate" name="startDate" style="width: 700px;">
+            </div>
+            <div class="form-group">
+                <label for="endDate">EndDate</label>
+                <input type="date" [(ngModel)]="endDate" [ngModelOptions]="{standalone:true}" class="form-control"
+                    id="endDate" name="endDate" style="width: 700px;">
+            </div>
+            <div class="form-group">
+                <label for="duration">Duration</label>
+                <input type="text" [(ngModel)]="duration" [ngModelOptions]="{standalone:true}" class="form-control"
+                    id="duration" name="duration" style="width: 700px;">
+            </div>
+            <div class="form-group">
+                <label for="status">Status</label>
+                <select name="status" id="status" [(ngModel)]="status" [ngModelOptions]="{standalone:true}"
+                    class="form-control" style="width: 700px;">
+                    <option value="To do">To do</option>
+                    <option value="Completed">Completed</option>
+                    <option value="Onhold">On hold</option>
+                    <option value="Inprocess">Inprocess</option>
+                </select>
+
+            </div>
+            <br>
+            <!-- <div>
+            
+                <input class="form-control" type="file" (change)="onFileSelected($event)" style="width: 700px;"/>
+                <input type="file" name="file" id="file" class="form-control"style="width: 700px;" (click)="onFileSelected($event)">
+            </div> -->
+
+            <div *ngFor="let tasksF of taskFields; let i=index">
+                <label for="priority">{{tasksF.field}}</label>
+                <div style="display: flex; justify-content: flex-start;">
+                    <input type="text" [(ngModel)]="tasksF.value" [ngModelOptions]="{standalone:true}"
+                        class="form-control" id="tasksF.value" name="tasksF.value" style="width: 62%;">
+                    <button class="btn btn-light" (click)="remove(i)"><mat-icon color="primary">delete</mat-icon>
+                    </button><br><br>
+
+                </div>
+            </div>
+            <br>
+            <div style="display: flex; justify-content: flex-start;">
+                <input type="text" [(ngModel)]="field" [ngModelOptions]="{standalone:true}" class="form-control"
+                    style="width: 400px;" placeholder="Enter the field name">
+                <button class="btn btn-light" (click)="addFields()"><mat-icon color="primary">add</mat-icon> </button>
+
+            </div>
+            <br><br>
+            <!-- <button  type="submit" class="btn btn-primary mt-4"
+                (click)="register()">Submit</button> -->
+            <button (click)="register()" mat-raised-button color="warn">Submit</button>
+        </form>
+
+    </div>

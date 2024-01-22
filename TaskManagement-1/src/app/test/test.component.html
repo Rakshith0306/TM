@@ -1,0 +1,51 @@
+<div class="first-line"><button (click)="closeDialogBox()" class="first-line-button">✕</button></div>
+<div class="container">
+  <h1 style="font-family: 'Courier New', Courier, monospace; font: bold; color: #07a35d;">Add Activities</h1>
+
+  <br>
+  <div class="form-container">
+    <!-- <label>Title:</label>
+    <input [(ngModel)]="newActivity.title" [ngModelOptions]="{standalone:true}" placeholder="Enter title" /> -->
+
+    <label>Description:</label>
+    <textarea [(ngModel)]="newActivity.description" [ngModelOptions]="{standalone:true}"
+      placeholder="Enter description"></textarea>
+
+    <label>Date:</label>
+    <input type="date" [(ngModel)]="newActivity.date" [ngModelOptions]="{standalone:true}" />
+
+    <label>Duration:</label>
+    <input type="text" [(ngModel)]="newActivity.duration" [ngModelOptions]="{standalone:true}"
+      placeholder="Enter duration" />
+
+    <span class="button1"><button (click)="addActivity()"mat-stroked-button color="primary">Add Activity</button></span>
+    <span class="button2"><button (click)="addDuration()"mat-stroked-button color="primary" style="margin-left: 10px;">Track duration</button></span>
+  </div>
+  
+
+  <div *ngFor="let activity of task.activities; let i=index" class="activity-card">
+    <p class="activity-title">{{ activity.date | date: 'medium' }}</p>
+    <p class="activity-description">{{ activity.description }}</p>
+    <p class="activity-description">{{ activity.duration }}</p>
+
+    <!-- Edit Icon -->
+    <button mat-mini-fab color="primary" (click)="editActivity(activity,task.id,i)">
+      <mat-icon>edit</mat-icon>
+    </button>
+
+    <!-- Remove Icon -->
+    <button mat-mini-fab color="primary" (click)="removeActivity(activity)" style="margin-left: 20px;">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
+
+
+
+
+
+
+</div>
+<!-- <div *ngFor="let activity of task.activities" class="activity-card">
+  <p class="activity-title">{{ activity.date | date: 'medium' }}</p>
+  <p>Total Duration: {{ calculateTotalDuration(activity.date) }}</p>
+</div> -->

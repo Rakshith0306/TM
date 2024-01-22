@@ -1,0 +1,118 @@
+<!-- <mat-radio-group [(ngModel)]="selectedOption" (change)="showOptionContent(selectedOption)">
+  <mat-radio-button *ngFor="let option of options" [value]="option.value">
+    {{ option.label }}
+  </mat-radio-button>
+</mat-radio-group>
+
+<div *ngIf="selectedOption === 'option1'">
+  <br>
+  <br>
+  <form class="d-flex" role="search">
+
+    <input class="form-control me-2" type="search" placeholder="Enter the taskname" aria-label="Search"
+      style="width: 300px" [(ngModel)]="taskname" [ngModelOptions]="{standalone:true}">
+    <button class="btn btn-outline-success" type="submit" (click)="searchByTaskName()">Search</button>
+  </form>
+
+</div>
+<div *ngIf="selectedOption === 'option2'">
+  <br>
+  <br>
+
+  <form class="d-flex" role="search">
+    <input class="form-control me-2" type="search" placeholder="Enter the duration" aria-label="Search"
+      style="width: 300px" [(ngModel)]="duration" [ngModelOptions]="{standalone:true}">
+    <button class="btn btn-outline-success" type="submit" (click)="searchByDuration()">Search</button>
+  </form>
+</div>
+
+
+<div *ngIf="selectedOption === 'option3'">
+  <br>
+  <br>
+
+  <form class="d-flex" role="search">
+    <input class="form-control me-2" type="search" placeholder="Enter the startDate" aria-label="Search"
+      style="width: 300px" [(ngModel)]="startDate" [ngModelOptions]="{standalone:true}">
+    <button class="btn btn-outline-success" type="submit" (click)="searchByDate()">Search</button>
+  </form>
+</div>  -->
+ <div>
+  
+ 
+
+  <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
+    <mat-tab label="SearchByTaskName">
+      <br><br>
+      <form class="d-flex" role="search">
+
+        <input class="form-control me-2" type="search" placeholder="Enter the taskname" aria-label="Search"
+          style="width: 300px;margin-right: 50px;" [(ngModel)]="taskname" [ngModelOptions]="{standalone:true}">
+        <button class="btn btn-outline-success" type="submit" (click)="searchByTaskName()">Search</button>
+      </form>
+
+    </mat-tab>
+    <mat-tab label="SearchByDuration">
+      <br><br>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Enter the duration" aria-label="Search"
+          style="width: 300px" [(ngModel)]="duration" [ngModelOptions]="{standalone:true}">
+        <button class="btn btn-outline-success" type="submit" (click)="searchByDuration()">Search</button>
+      </form>
+    </mat-tab>
+
+    <mat-tab label="SearchByStartDate">
+      <br><br>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Enter the start date (YYYY-MM-DD)" aria-label="Search"
+          style="width: 300px" [(ngModel)]="startDate" [ngModelOptions]="{standalone:true}">
+        <button class="btn btn-outline-success" type="submit" (click)="searchByDate()">Search</button>
+      </form>
+    </mat-tab>
+    
+
+  </mat-tab-group>
+ <br><br>
+  <span><button mat-stroked-button color="warn" (click)="getAllTasks()">GetAll</button></span>
+  <br>
+  <br>
+
+  
+
+  <p *ngIf="tasks.length < 1" style="color: #555; font-size: 18px; margin-top: 10px;">
+    No Data to Display
+  </p>
+
+  <div *ngFor="let task of tasks"
+    style="border: 0.5px solid black; width: 300px; border-radius: 20px;  box-shadow: 4px 1px 4px 1px;background-color: rgb(245, 240, 235); "
+    cdkDrag>
+    <span>
+      <p style="margin-left: 20px;">TaskName: {{task.taskName}}</p>
+    </span>
+    <span>
+      <p style="margin-left: 20px;">Category: {{task.category}}</p>
+    </span>
+    <span>
+      <p style="margin-left: 20px;">priority: {{task.priority}}</p>
+    </span>
+    <span>
+      <p style="margin-left: 20px;">Notes: {{task.notes}}</p>
+    </span>
+    <span>
+      <p style="margin-left: 20px;">StartDate: {{task.startDate|date}}</p>
+    </span>
+    <span>
+      <p style="margin-left: 20px;">EndDate: {{task.endDate |date}}</p>
+    </span>
+    <span>
+      <p style="margin-left: 20px;">Duration: {{task.duration}}</p>
+    </span>
+    <span>
+      <p style="margin-left: 20px;">Status: {{task.status}}</p>
+    </span>
+    <!-- <img *ngIf="getImageDataUrl(task.fileEntity.data)!=''" [src]="getImageDataUrl(task.fileEntity.data)" alt=""  style="width: 140px; height: 100px; border: 1px solid black; border-radius: 10%; margin-left: 30px;"><br><br> -->
+    <button mat-raised-button color="warn" (click)="openDialog(task)"
+      style="margin-left: 80px; margin-bottom: 10px;">Delete</button>
+  </div>
+</div>
+<br><br>

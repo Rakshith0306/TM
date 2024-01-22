@@ -1,0 +1,250 @@
+<div cdkDropListGroup>
+  <div class="example-container">
+    <div class="scroll-container">
+      <h2>To do</h2>
+
+      <div cdkDropList [cdkDropListData]="todo" class="example-list" id="To do" (cdkDropListDropped)="drop($event)">
+        <div class="example-box" *ngFor="let item of todo; let i=index" cdkDrag>
+          <span style="display: flex; justify-content: space-between;">
+            <p style="margin-left: 20px;"><span style="color: blue;">TaskName :</span> {{item.taskName}}</p>
+            <button (click)="toggleContents3(i)" mat-stroked-button color="warn" style="border-radius: 10px;">{{ showContents3[i] ? 'Hide' : 'Show'
+              }}</button>
+            <!-- <button  (click)="toggleContents3(i)" mat-stroked-button color="warn">{{ showContents3[i] ? 'Hide' : 'Show'
+              }}</button> -->
+          </span>
+          <div *ngIf="showContents3[i]">
+            <span>
+              <p style="margin-left: 20px;"><span style="color: blue;">Category : </span> {{item.category}}</p>
+            </span>
+            <span>
+              <p style="margin-left: 20px;"><span style="color: blue;">Priority :</span> {{item.priority}}</p>
+            </span>
+            <span>
+              <p style="margin-left: 20px;"><span style="color: blue;">Notes :</span> {{item.notes}}</p>
+            </span>
+            <span>
+              <p style="margin-left: 20px;"><span style="color: blue;">StartDate :</span> {{item.startDate|date}}</p>
+            </span>
+            <span>
+              <p style="margin-left: 20px;" [ngStyle]="isEnded(item.endDate) ? {'color': 'red'} : {'color': 'green'}">
+                EndDate : {{item.endDate |date}}</p>
+            </span>
+            <span style="display: flex; justify-content: flex-start;">
+              <p style="margin-left: 20px;"> <span style="color: blue;">Duration :</span> {{item.duration}}</p>
+              <!-- <button
+                mat-icon-button (click)="addActivities(item)"
+                style=" margin-left: 30px;"><mat-icon>schedule</mat-icon></button> -->
+              <span style="margin-left: 20px;  cursor: pointer;"><mat-icon (click)="addActivities(item)"
+                  style="font-size: 25px;">schedule</mat-icon></span>
+            </span>
+            <span>
+              <p style="margin-left: 20px;"><span style="color: blue;">Status :</span> {{item.status}}</p>
+            </span>
+            <span>
+              <p style="margin-left: 20px;" *ngFor="let data of item.label"><span style="color: blue;">{{data.field}}
+                  :</span> {{data.value}}</p>
+            </span>
+            <!-- <button style="margin-right: 16px;" class="btn btn-danger" (click)="openDialog(item)">Delete</button>
+            <button style="margin-right: 16px;" (click)="updateTask(item.id)" class="btn btn-success"
+              style="margin-left: 10px;">Edit details</button> -->
+            <button mat-stroked-button color="primary" (click)="openDialog(item)" style="border-radius: 15px;">Delete</button>
+            <button style="margin-right: 16px; margin-left: 10px;border-radius: 15px;" (click)="updateTask(item.id)" mat-stroked-button
+              color="primary">Edit
+              details</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="example-container">
+    <h2>Inprocess</h2>
+
+    <div cdkDropList [cdkDropListData]="inProcess" class="example-list" id="Inprocess"
+      (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let item of inProcess let i=index" cdkDrag>
+        <span style="display: flex; justify-content: space-between;">
+          <p style="margin-left: 20px;"><span style="color: blue;">TaskName :</span> {{item.taskName}}</p>
+          <button (click)="toggleContents(i)" mat-stroked-button color="warn" style="border-radius: 10px;"> {{ showContents[i] ? 'Hide' : 'Show'
+            }}</button>
+        </span>
+
+        <div *ngIf="showContents[i]">
+          <span>
+            <p style="margin-left: 20px; "><span style="color: blue;">Category :</span> {{item.category}}</p>
+          </span>
+          <span>
+            <p style="margin-left: 20px;"><span style="color: blue;">Priority :</span> {{item.priority}}</p>
+          </span>
+          <span>
+            <p style="margin-left: 20px;"><span style="color: blue;">Notes :</span> {{item.notes}}</p>
+          </span>
+          <span>
+            <p style="margin-left: 20px;"><span style="color: blue;">StartDate :</span> {{item.startDate|date}}</p>
+          </span>
+          <span>
+            <p style="margin-left: 20px;" [ngStyle]="isEnded(item.endDate) ? {'color': 'red'} : {'color': 'green'}">
+              EndDate : {{item.endDate |date}}</p>
+          </span>
+          <span style="display: flex; justify-content: flex-start;">
+            <p style="margin-left: 20px;"> <span style="color: blue;">Duration :</span> {{item.duration}}</p>
+            <!-- <button
+              mat-icon-button (click)="addActivities(item)"
+              style="width: 50px; height:30px ; margin-left: 10px;"><mat-icon matIcon>edit</mat-icon></button> -->
+            <span style="margin-left: 20px;  cursor: pointer;"><mat-icon (click)="addActivities(item)"
+                style="font-size: 25px;">schedule</mat-icon></span>
+          </span>
+          <span>
+            <p style="margin-left: 20px;"><span style="color: blue;">Status :</span> {{item.status}}</p>
+          </span>
+          <span>
+            <p style="margin-left: 20px;" *ngFor="let data of item.label"><span style="color: blue;">{{data.field}}
+                :</span> {{data.value}}</p>
+          </span>
+          <!-- <button style="margin-right: 16px;" class="btn btn-danger" (click)="openDialog(item)">Delete</button>
+          <button style="margin-right: 16px;" (click)="updateTask(item.id)" class="btn btn-success"
+            style="margin-left: 8px;">Edit details</button> -->
+          <button mat-stroked-button color="primary" (click)="openDialog(item)" style="border-radius: 15px;">Delete</button>
+          <button style="margin-right: 16px; margin-left: 10px; border-radius: 15px;" (click)="updateTask(item.id)" mat-stroked-button
+            color="primary">Edit
+            details</button>
+        </div>
+        <!-- <button style="margin-right: 16px;"  class="btn btn-danger">Delete</button> -->
+        <!-- <button style="margin-right: 16px;"(click)="updateTask(item.id)" class="btn btn-success" style="margin-left: 10px;">Edit details</button> -->
+        <!-- <button  mat-raised-button color="primary" >Delete</button>
+            <button  mat-raised-button color="warn" style="margin-left: 40px;">update</button> -->
+        <!-- <button style="margin-left: 80px; margin-bottom: 30px;" type="submit"
+             mat-raised-button color="warn" (click)="updateTask(item.id)"><span><mat-icon>update</mat-icon></span>Edit details</button>  -->
+
+      </div>
+    </div>
+  </div>
+
+
+  <div class="example-container">
+    <h2>On Hold</h2>
+
+    <div cdkDropList [cdkDropListData]="onHold" class="example-list" id="Onhold" (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let item of onHold let i=index" cdkDrag>
+        <span style="display: flex; justify-content: space-between;">
+          <p style="margin-left: 20px;"><span style="color: blue;">TaskName : </span> {{item.taskName}}</p>
+          <button (click)="toggleContents1(i)" mat-stroked-button color="warn" style="border-radius: 10px;">{{ showContents1[i] ? 'Hide' : 'Show'
+            }}</button>
+        </span>
+
+        <div *ngIf="showContents1[i]">
+          <span>
+            <p style="margin-left: 20px;"><span style="color: blue;">Category :</span> {{item.category}}</p>
+          </span>
+          <span>
+            <p style="margin-left: 20px;"><span style="color: blue;">Priority :</span> {{item.priority}}</p>
+          </span>
+          <span>
+            <p style="margin-left: 20px;"><span style="color: blue;"> Notes :</span> {{item.notes}}</p>
+          </span>
+          <span>
+            <p style="margin-left: 20px;"><span style="color: blue;">StartDate :</span> {{item.startDate|date}}</p>
+          </span>
+          <span>
+            <p style="margin-left: 20px;" [ngStyle]="isEnded(item.endDate) ? {'color': 'red'} : {'color': 'green'}">
+              EndDate : {{item.endDate |date}}</p>
+          </span>
+          <span style="display: flex; justify-content: flex-start;">
+            <p style="margin-left: 20px;"> <span style="color: blue;">Duration :</span> {{item.duration}}</p>
+            <!-- <button
+              mat-icon-button (click)="addActivities(item)"
+              style="width: 50px; height:30px ; margin-left: 10px;"><mat-icon>edit</mat-icon></button> -->
+            <span style="margin-left: 20px;  cursor: pointer;"><mat-icon (click)="addActivities(item)"
+                style="font-size: 25px;">schedule</mat-icon></span>
+          </span>
+          <span>
+            <p style="margin-left: 20px;"><span style="color: blue;">Status :</span> {{item.status}}</p>
+          </span>
+          <span>
+            <p style="margin-left: 20px;" *ngFor="let data of item.label"><span style="color: blue;">{{data.field}}
+                :</span> {{data.value}}</p>
+          </span>
+          <!-- <img [src]="getImageDataUrl(item.fileEntity.data)" alt=""> -->
+          <button mat-stroked-button color="primary" (click)="openDialog(item)" style="border-radius: 15px;">Delete</button>
+          <button style="margin-right: 16px; margin-left: 10px;border-radius: 15px; " (click)="updateTask(item.id)" mat-stroked-button
+            color="primary">Edit
+            details</button>
+          <!-- <button style="margin-right: 16px;" class="btn btn-danger" (click)="openDialog(item)">Delete</button>
+          <button style="margin-right: 16px;" (click)="updateTask(item.id)" class="btn btn-success"
+            style="margin-left: 10px;">Edit details</button> -->
+        </div>
+        <!-- <button style="margin-right: 16px;"  class="btn btn-danger">Delete</button> -->
+        <!-- <button style="margin-right: 16px;"(click)="updateTask(item.id)" class="btn btn-success" style="margin-left: 10px;">Edit details</button> -->
+        <!-- <button  mat-raised-button color="primary" >Delete</button>
+          <button  mat-raised-button color="warn" style="margin-left: 40px;">update</button> -->
+        <!-- <button style="margin-left: 80px; margin-bottom: 30px;" type="submit"
+           mat-raised-button color="warn" (click)="updateTask(item.id)"><span><mat-icon>update</mat-icon></span>Edit details</button>  -->
+      </div>
+    </div>
+  </div>
+
+
+  <div class="example-container">
+    <h2>Done</h2>
+
+    <div cdkDropList [cdkDropListData]="completed" class="example-list" id="Completed"
+      (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let item of completed let i=index" cdkDrag>
+        <span style="display: flex; justify-content: space-between;">
+          <p style="margin-left: 20px;"><span style="color: blue;">TaskName :</span> {{item.taskName}}</p>
+          <button (click)="toggleContents2(i)" mat-stroked-button color="warn" style="border-radius: 10px;">{{ showContents2[i] ? 'Hide' : 'Show'
+            }}</button>
+        </span>
+
+        <div *ngIf="showContents2[i]">
+          <span>
+            <p style="margin-left: 20px;"><span style="color: blue;">Category : </span> {{item.category}}</p>
+          </span>
+          <span>
+            <p style="margin-left: 20px;"> <span style="color: blue;">Priority : </span> {{item.priority}}</p>
+          </span>
+          <span>
+            <p style="margin-left: 20px;"> <span style="color: blue;">Notes : </span> {{item.notes}}</p>
+          </span>
+          <span>
+            <p style="margin-left: 20px;"><span style="color: blue;">StartDate : </span> {{item.startDate|date}}</p>
+          </span>
+          <span>
+            <p style="margin-left: 20px; color: green;">EndDate : {{item.endDate |date}}</p>
+          </span>
+          <span style="display: flex; justify-content: flex-start;">
+            <p style="margin-left: 20px;"> <span style="color: blue;">Duration :</span> {{item.duration}}</p>
+            <!-- <button
+              mat-icon-button (click)="addActivities(item)"
+              style="width: 50px; height:30px ; margin-left: 10px;"><mat-icon>edit</mat-icon></button> -->
+            <span style="margin-left: 20px;  cursor: pointer;"><mat-icon (click)="addActivities(item)"
+                style="font-size: 25px;">schedule</mat-icon></span>
+          </span>
+          <span>
+            <p style="margin-left: 20px;"><span style="color: blue;">Status : </span> {{item.status}}</p>
+          </span>
+          <span>
+            <p style="margin-left: 20px;" *ngFor="let data of item.label"><span style="color: blue;">{{data.field}} :
+              </span> {{data.value}}</p>
+          </span>
+          <button mat-stroked-button color="primary" (click)="openDialog(item)" style="border-radius: 15px;">Delete</button>
+          <button style="margin-right: 16px; margin-left: 10px;border-radius: 15px;" (click)="updateTask(item.id)" mat-stroked-button
+            color="primary">Edit
+            details</button>
+          <!-- <button style="margin-right: 16px;" class="btn btn-danger" (click)="openDialog(item)">Delete</button>
+          <button style="margin-right: 16px;" (click)="updateTask(item.id)" class="btn btn-success"
+            style="margin-left: 10px;">Edit details</button> -->
+        </div>
+        <!-- <button style="margin-right: 16px;"  class="btn btn-danger">Delete</button> -->
+        <!-- <button style="margin-right: 16px;"(click)="updateTask(item.id)" class="btn btn-success" style="margin-left: 10px;">Edit details</button> -->
+        <!-- <button  mat-raised-button color="primary" >Delete</button>
+          <button  mat-raised-button color="warn" style="margin-left: 40px;">update</button> -->
+        <!-- <button style="margin-left: 80px; margin-bottom: 30px;" type="submit"
+           mat-raised-button color="warn" (click)="updateTask(item.id)"><span><mat-icon>update</mat-icon></span>Edit details</button>  -->
+      </div>
+    </div>
+  </div>
+
+
+</div>

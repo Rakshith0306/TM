@@ -1,0 +1,65 @@
+ .container {
+   max-width: 600px;
+   margin: 0 auto;
+   padding: 20px;
+ }
+
+ .form-container {
+   margin-bottom: 20px;
+
+ }
+
+ label {
+   display: block;
+   margin-bottom: 5px;
+ }
+
+ input,
+ textarea {
+   width: 100%;
+   padding: 8px;
+   margin-bottom: 10px;
+   box-sizing: border-box;
+ }
+
+ /* button {
+   background-color: #4CAF50;
+   color: white;
+   padding: 10px;
+   border: none;
+   cursor: pointer;
+  
+ } */
+
+ /* button:hover {
+   background-color: #45a049;
+ } */
+
+ .activity-card {
+   background-color: #f9f9f9;
+   border: 1px solid #ddd;
+   padding: 10px;
+   margin-bottom: 10px;
+   box-shadow: 5px 5px 5px rgba(179, 170, 170, 0.1);
+ }
+
+ .activity-title {
+   font-weight: bold;
+   margin-bottom: 5px;
+ }
+
+ .first-line {
+   display: flex;
+   justify-content: flex-end;
+ }
+
+ .first-line-button {
+   background-color: rgb(243, 71, 71);
+   color: white;
+   border: none;
+   padding: 1px 13px;
+ }
+
+ .first-line-button:hover {
+   background-color: red;
+ }

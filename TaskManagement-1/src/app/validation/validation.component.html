@@ -1,0 +1,96 @@
+<p>validation works!</p>
+<h1 style="color: #07a35d; margin-left: 560px; font-family: 'Courier New', Courier, monospace; font: bold;">ADD TASK</h1>
+<div style="margin-left: 95px; margin-top: 20px;">
+
+    <div class="parent">
+
+        <mat-form-field style="width: 500px;">
+            <mat-label>TaskName</mat-label>
+            <input matInput [(ngModel)]="taskName" [ngModelOptions]="{standalone:true}">
+          
+        </mat-form-field>
+
+        <mat-form-field style="width: 500px;">
+            <mat-label>Category</mat-label>
+            <input matInput [(ngModel)]="category" [ngModelOptions]="{standalone:true}">
+        </mat-form-field>
+
+        <mat-form-field style="width: 500px;">
+            <mat-label>Priority</mat-label>
+            <input matInput [(ngModel)]="priority" [ngModelOptions]="{standalone:true}">
+        </mat-form-field>
+
+        <mat-form-field style="width: 500px;">
+            <mat-label>Notes</mat-label>
+            <textarea matInput [(ngModel)]="notes" [ngModelOptions]="{standalone:true}"></textarea>
+        </mat-form-field>
+
+
+        <mat-form-field style="width: 500px;">
+            <mat-label>StartDate</mat-label>
+            <input matInput [matDatepicker]="picker" [(ngModel)]="startDate" [ngModelOptions]="{standalone:true}">
+            <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+
+
+        <mat-form-field style="width: 500px;">
+            <mat-label>EndDate</mat-label>
+            <input matInput [matDatepicker]="picker1" [(ngModel)]="endDate" [ngModelOptions]="{standalone:true}">
+            <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
+            <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field style="width: 500px;">
+            <mat-label>Duration</mat-label>
+            <input matInput [(ngModel)]="duration" [ngModelOptions]="{standalone:true}" type="text">
+        </mat-form-field>
+
+        <mat-form-field style="width: 500px">
+            <mat-label>Status</mat-label>
+            <mat-select [(ngModel)]="status" [ngModelOptions]="{standalone:true}">
+                <mat-option value="To do">To do</mat-option>
+                <mat-option value="Completed">Completed</mat-option>
+                <mat-option value="Onhold">On hold</mat-option>
+                <mat-option value="Inprocess">Inprocess</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <div *ngFor="let tasksF of taskFields; let i=index">
+            <mat-form-field style="width: 500px; height: 100px;" >
+                <mat-label>{{tasksF.field}}</mat-label>
+                <input matInput [(ngModel)]="tasksF.value" [ngModelOptions]="{standalone:true}" id="tasksF.value"
+                    name="tasksF.value">
+                <!-- <button  mat-icon-button (click)="remove(i)" style="margin-left: 70px;">
+          <mat-icon color="primary">delete</mat-icon>
+        </button> -->
+                <mat-icon matIconSuffix (click)="remove(i)" style="margin-left: 90px;">delete</mat-icon>
+            </mat-form-field>
+        </div>
+
+        <mat-form-field style="width: 500px;height: 100px;">
+            <mat-label>Enter the field name</mat-label>
+            <div style="display: flex; justify-content: flex-start; align-items: center;">
+            <input matInput [(ngModel)]="field" [ngModelOptions]="{standalone:true}">
+            <mat-icon matIcon Suffix (click)="addFields()" style="margin-left: 90px;">add</mat-icon>
+            </div>
+        </mat-form-field>
+
+        <!-- <mat-form-field style="width: 500px;">
+            <div style="display: flex; justify-content: flex-start; align-items: center;">
+                <input matInput [(ngModel)]="field" [ngModelOptions]="{standalone:true}"
+                    placeholder="Enter the field name">
+                <mat-icon matIcon Suffix (click)="addFields()" style="margin-left: 90px;">add</mat-icon>
+                <button mat-icon-button (click)="addFields()" style="margin-left: 70px;">
+          <mat-icon color="warn">add</mat-icon>
+        </button>
+            </div>
+        </mat-form-field> -->
+        
+       
+    </div>
+    <button (click)="register()" mat-raised-button color="primary" style="width: 100px;">Submit</button>
+   

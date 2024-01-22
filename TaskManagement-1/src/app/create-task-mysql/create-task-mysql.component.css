@@ -1,0 +1,100 @@
+/* styles.css */
+
+/* .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  h1 {
+    color: #07a35d;
+    margin-right: 400px;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  input, select {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+  }
+  
+  button {
+    margin-top: 10px;
+    padding: 8px;
+    cursor: pointer;
+  } */
+  
+  /* Add more styles as needed */
+  
+
+  /* AddTask Component Styles */
+div.container {
+  display: flex;
+  justify-content: center;
+}
+
+div.form-container {
+  margin-left: 300px;
+}
+
+h1 {
+  color: #07a35d;
+}
+
+form {
+  width: 700px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input, select {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  margin-top: 10px;
+}
+
+/* Task Fields Styles */
+div.task-fields {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+input.field-input {
+  width: 62%;
+}
+
+button.delete-btn {
+  margin-left: 10px;
+}
+.parent {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 50px;
+  grid-row-gap: 5px;
+  }
+/* Additional Styles */
+/* Add your custom styles here */
+

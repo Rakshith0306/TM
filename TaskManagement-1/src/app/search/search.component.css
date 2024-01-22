@@ -1,0 +1,32 @@
+/* app.component.css */
+ .example-form-field {
+    width: 500px
+  }
+  
+  .search-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .search-icon {
+    margin-right: 1px;
+  }
+
+  :host {
+    display: block;
+    animation: slideFromRight 0.5s ease-out;
+  }
+  
+  @keyframes slideFromRight {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+ 
+  .mat-tab-group {
+    margin-bottom: 48px;
+  }
+  

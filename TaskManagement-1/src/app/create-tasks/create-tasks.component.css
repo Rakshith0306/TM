@@ -1,0 +1,42 @@
+/* .parent {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    grid-column-gap: 40px;
+    grid-row-gap: 0px;
+    } */
+
+    .example-container mat-form-field + mat-form-field {
+      margin-left: 8px;
+    }
+/* button:hover
+{
+  background-color: rgb(129, 122, 129);
+} */
+
+    .parent {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(5, 1fr);
+        grid-column-gap: 50px;
+        grid-row-gap: 0px;
+  
+        }
+
+    :host {
+        display: block;
+        animation: slideFromRight 0.5s ease-out;
+      }
+      
+      @keyframes slideFromRight {
+        from {
+          transform: translateX(100%);
+        }
+        to {
+          transform: translateX(0);
+        }
+      }
+
+
+
+
